@@ -17,6 +17,7 @@ public class PlayerMove : MonoBehaviour
         CameraPoint = transform.position;
 
         agent = GetComponent<NavMeshAgent>();
+        LayerMask ground = LayerMask.NameToLayer("Ground");
     }
 
     // Update is called once per frame
@@ -26,17 +27,37 @@ public class PlayerMove : MonoBehaviour
     }
     public void Move()
     {
-        if (!cam.enabled && Input.GetMouseButtonDown(0))
+        if (SystemInfo.deviceType == DeviceType.Desktop)
         {
-            RaycastHit hit;
-
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
+            if (!cam.enabled && Input.GetMouseButtonDown(0))
             {
-                Debug.Log("Did Hit");
-                CameraPoint = hit.point;
-                CameraPoint.y = 0.5f;
-            }
+                RaycastHit hit;
 
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, ground))
+                {
+                    Debug.Log("Did Hit");
+                    CameraPoint = hit.point;
+                    CameraPoint.y = 0.5f;
+                }
+
+            }
+        }
+        else if (SystemInfo.deviceType == DeviceType.Handheld)
+        {
+            foreach (Touch touch in Input.touches)
+            {
+                if (!cam && touch.phase == TouchPhase.Began)
+                {
+                    RaycastHit hit;
+
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(touch.position), out hit, Mathf.Infinity))
+                    {
+                        Debug.Log("Did Hit");
+                        CameraPoint = hit.point;
+                        CameraPoint.y = 0.5f;
+                    }
+                }
+            } 
         }
         if (this.transform.position != CameraPoint)
         {
