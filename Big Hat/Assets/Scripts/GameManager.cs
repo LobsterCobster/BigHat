@@ -5,7 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public Camera cam;
-    public GameObject Photobutton;
+    public Canvas canvas;
+    public Canvas cameraCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +18,13 @@ public class GameManager : MonoBehaviour
     {
         if (cam.enabled)
         {
-            Photobutton.SetActive(true);
+            canvas.enabled = false;
+            cameraCanvas.enabled = true;
         }
         else
         {
-            Photobutton.SetActive(false);
+            canvas.enabled = true;
+            cameraCanvas.enabled = false;
         }
     }
 }

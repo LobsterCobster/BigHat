@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class PlayerMove : MonoBehaviour
         {
             if (!cam.enabled && Input.GetMouseButtonDown(0))
             {
+                if (EventSystem.current.IsPointerOverGameObject())
+                    return;
                 RaycastHit hit;
 
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, ground))
