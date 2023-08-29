@@ -16,6 +16,10 @@ public class Photo : MonoBehaviour
     
     public List<string> images = new List<string>();
 
+    Texture2D currentCapture;
+
+    public List<Sprite> sprites = new List<Sprite>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +61,7 @@ public class Photo : MonoBehaviour
                     int objectid = GetObjectId(hit.transform.name);
                     StartCoroutine(CaptureScreen(objectid));
                     DisplayText(hit.transform.name);
+
                 }
             }
         }
@@ -88,7 +93,12 @@ public class Photo : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
 
-        ScreenCapture.CaptureScreenshot(objectid + ".png");
+        currentCapture = new Texture2D(Screen.width,Screen.height, TextureFormat.RGB24, false);
+        currentCapture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0, false);
+        currentCapture.Apply();
+        Sprite sprite = Sprite.Create(currentCapture, new Rect(0, 0, Screen.width, Screen.height), new Vector2(0, 0));
+        sprites.Add(sprite);
+
 
         GameObject.Find("CameraBackground").GetComponent<Canvas>().enabled = true;
     }
