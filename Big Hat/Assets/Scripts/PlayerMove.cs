@@ -7,7 +7,8 @@ using UnityEngine.EventSystems;
 public class PlayerMove : MonoBehaviour
 {
     public Camera cam;
-    public LayerMask ground;
+    private LayerMask ground;
+    private LayerMask NPC;
     Vector3 CameraPoint;
 
     NavMeshAgent agent;
@@ -18,7 +19,8 @@ public class PlayerMove : MonoBehaviour
         CameraPoint = transform.position;
 
         agent = GetComponent<NavMeshAgent>();
-        LayerMask ground = LayerMask.NameToLayer("Ground");
+        ground = LayerMask.NameToLayer("Ground");
+        NPC = LayerMask.NameToLayer("NPC");
     }
 
     // Update is called once per frame
@@ -38,9 +40,12 @@ public class PlayerMove : MonoBehaviour
 
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, ground))
                 {
-                    Debug.Log("Did Hit");
                     CameraPoint = hit.point;
                     CameraPoint.y = 0.5f;
+                }
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, NPC))
+                {
+
                 }
 
             }

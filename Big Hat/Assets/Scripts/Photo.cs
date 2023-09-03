@@ -86,6 +86,11 @@ public class Photo : MonoBehaviour
         id = images.Count;
         return id;
     }
+    public string GetName(int Id)
+    {
+        name = photos[Id].Object.name;
+        return name;
+    }
     public IEnumerator CaptureScreen(int objectid)
     {
         yield return null;

@@ -15,7 +15,7 @@ public class RotateCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cam = GetComponent<Camera>();
+        cam = GameObject.Find("Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame

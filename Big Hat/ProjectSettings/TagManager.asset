@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Capture
+  - NPC
   layers:
   - Default
   - TransparentFX

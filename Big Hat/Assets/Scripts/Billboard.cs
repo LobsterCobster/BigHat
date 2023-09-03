@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
+    public Camera Cam;
     [SerializeField] private BillboardType billboardType;
 
     [Header("Lock Rotation")]
@@ -15,29 +16,34 @@ public class Billboard : MonoBehaviour
 
     private void Awake()
     {
+        Cam = GameObject.Find("Camera").GetComponent<Camera>();
         originalRotation = transform.rotation.eulerAngles;
     }
 
     // Use Late update so everything should have finished moving.
     void LateUpdate()
     {
-        // There are two ways people billboard things.
-        switch (billboardType)
+        if (!Cam.enabled)
         {
-            case BillboardType.LookAtCamera:
-                transform.LookAt(Camera.main.transform.position, Vector3.up);
-                break;
-            case BillboardType.CameraForward:
-                transform.forward = Camera.main.transform.forward;
-                break;
-            default:
-                break;
+            // There are two ways people billboard things.
+            switch (billboardType)
+            {
+                case BillboardType.LookAtCamera:
+                    transform.LookAt(Camera.main.transform.position, Vector3.up);
+                    break;
+                case BillboardType.CameraForward:
+                    transform.forward = Camera.main.transform.forward;
+                    break;
+                default:
+                    break;
+            }
+            // Modify the rotation in Euler space to lock certain dimensions.
+            Vector3 rotation = transform.rotation.eulerAngles;
+            if (lockX) { rotation.x = originalRotation.x; }
+            if (lockY) { rotation.y = originalRotation.y; }
+            if (lockZ) { rotation.z = originalRotation.z; }
+            transform.rotation = Quaternion.Euler(rotation);
         }
-        // Modify the rotation in Euler space to lock certain dimensions.
-        Vector3 rotation = transform.rotation.eulerAngles;
-        if (lockX) { rotation.x = originalRotation.x; }
-        if (lockY) { rotation.y = originalRotation.y; }
-        if (lockZ) { rotation.z = originalRotation.z; }
-        transform.rotation = Quaternion.Euler(rotation);
+
     }
 }
