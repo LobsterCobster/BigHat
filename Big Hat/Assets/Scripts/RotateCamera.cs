@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,12 +11,16 @@ public class RotateCamera : MonoBehaviour
     public float Speed = 5;
     public GameObject crosshair;
     public LayerMask capture;
+    private GameObject photo;
     private Camera cam;
     public Text text;
+    public Vector3 Origin;
     // Start is called before the first frame update
     void Start()
     {
-        cam = GameObject.Find("Camera").GetComponent<Camera>();
+        photo = GameObject.Find("Camera");
+        cam = photo.GetComponent<Camera>();
+        Origin = cam.transform.eulerAngles;
     }
 
     // Update is called once per frame
@@ -27,14 +32,23 @@ public class RotateCamera : MonoBehaviour
     void RotateCam()
     {
         // ISSUE: GetMouse Button Overlaps with pressing on the Camera Button
-        if(Input.GetMouseButton(0) && cam.enabled)
+        if (cam.enabled)
         {
-            transform.eulerAngles += Speed * new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = false;
+            if (Input.GetMouseButton(0))
+            {
+                transform.eulerAngles += Speed * new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = false;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
         }
         else
         {
+            transform.eulerAngles = Origin;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
@@ -87,8 +101,11 @@ public class RotateCamera : MonoBehaviour
     }
     public void DisplayCaptured()
     {
-        text.text = "Object Already Captured";
-        text.color = new Color(0, 255, 0, 255);
+        if (photo.GetComponent<Photo>().timer == false)
+        {
+            text.text = "Object Already Captured";
+            text.color = new Color(0, 255, 0, 255);
+        }
     }
     public void NotCaptured()
     {

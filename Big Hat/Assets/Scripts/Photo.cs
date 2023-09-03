@@ -10,7 +10,7 @@ public class Photo : MonoBehaviour
     public List<PhotoObject> photos = new List<PhotoObject>();
     private Camera cam;
     public Text camtext;
-    private bool timer;
+    public bool timer;
 
     private float time;
     
@@ -68,6 +68,8 @@ public class Photo : MonoBehaviour
     }
     public void DisplayText(string text)
     {
+        Debug.Log(text);
+        camtext.color = new Color(255, 255, 255, 255);
         camtext.text = text;
         timer = true;
         time = 0f;
@@ -88,8 +90,8 @@ public class Photo : MonoBehaviour
     }
     public string GetName(int Id)
     {
-        name = photos[Id].Object.name;
-        return name;
+        string objectName = photos[Id].Object.name;
+        return objectName;
     }
     public IEnumerator CaptureScreen(int objectid)
     {

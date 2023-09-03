@@ -11,7 +11,7 @@ using System.Linq;
 public class Scrapbook : MonoBehaviour
 {
     public GameObject photo;
-    public Text Name;
+    public Text ObjectName;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,13 +53,13 @@ public class Scrapbook : MonoBehaviour
             image.GetComponent<Image>().sprite = frame;
             int id = int.Parse(string.Concat(child.name.Where(Char.IsDigit)));
             string name = photo.GetComponent<Photo>().GetName(id-1);
-            Name.text = name;
+            ObjectName.text = name;
         }
         else
         {
             image.GetComponent<Image>().color = Color.clear;
             image.GetComponent<Image>().sprite = null;
-            Name.text = "";
+            ObjectName.text = "";
         }
     }
 }
