@@ -68,7 +68,6 @@ public class Photo : MonoBehaviour
     }
     public void DisplayText(string text)
     {
-        Debug.Log(text);
         camtext.color = new Color(255, 255, 255, 255);
         camtext.text = text;
         timer = true;

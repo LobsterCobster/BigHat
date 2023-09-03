@@ -5968,6 +5968,34 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!64 &186328568
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186328560}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: c1ae20c73aaca3c4c99bd97e9b7602c2, type: 3}
+--- !u!136 &186328569
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186328560}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.10533612
+  m_Height: 0.022496777
+  m_Direction: 1
+  m_Center: {x: -0.000000029885125, y: 0.0005809838, z: 0.002197437}
 --- !u!4 &208751089 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7216687364710061828, guid: 1ab71e69ef37eff4d8eccc377f2ec1b8, type: 3}
@@ -8645,19 +8673,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: 962e41acadc4f4d46977b7370a43ff98, type: 3}
---- !u!65 &393826826
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393826817}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.038007446, y: 0.05650977, z: 0.17629696}
-  m_Center: {x: 0.000000029826708, y: -0.013103066, z: -0.001648385}
 --- !u!1001 &396328420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13660,7 +13675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c1ae20c73aaca3c4c99bd97e9b7602c2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.556
+      value: 0.806
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c1ae20c73aaca3c4c99bd97e9b7602c2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13694,9 +13709,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 22.06
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c1ae20c73aaca3c4c99bd97e9b7602c2, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -5568371526223589888, guid: c1ae20c73aaca3c4c99bd97e9b7602c2, type: 3}
       propertyPath: m_Name
       value: Blue Tongue
+      objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: c1ae20c73aaca3c4c99bd97e9b7602c2, type: 3}
+      propertyPath: m_TagString
+      value: Capture
+      objectReference: {fileID: 0}
+    - target: {fileID: -2577548232221058511, guid: c1ae20c73aaca3c4c99bd97e9b7602c2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.3094236
+      objectReference: {fileID: 0}
+    - target: {fileID: -2577548232221058511, guid: c1ae20c73aaca3c4c99bd97e9b7602c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.487271
+      objectReference: {fileID: 0}
+    - target: {fileID: -2577548232221058511, guid: c1ae20c73aaca3c4c99bd97e9b7602c2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.23637135
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c1ae20c73aaca3c4c99bd97e9b7602c2, type: 3}
       propertyPath: m_Name
@@ -21794,19 +21829,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: 962e41acadc4f4d46977b7370a43ff98, type: 3}
---- !u!65 &1260573404
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1260573398}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.03800746, y: 0.056509767, z: 0.17629698}
-  m_Center: {x: 1.9587686e-10, y: -0.013103066, z: -0.0016483852}
 --- !u!43 &1269887940
 Mesh:
   m_ObjectHideFlags: 0
@@ -29938,7 +29960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photo: {fileID: 1702257623}
-  ObjectName: {fileID: 0}
+  ObjectName: {fileID: 1466914882}
 --- !u!1 &1625057905
 GameObject:
   m_ObjectHideFlags: 0
