@@ -7,23 +7,19 @@ using UnityEngine.UI;
 
 public class Photo : MonoBehaviour
 {
-    public List<PhotoObject> photos = new List<PhotoObject>();
+    private Database database;
     private Camera cam;
     public Text camtext;
     public bool timer;
 
     private float time;
-    
-    public List<string> images = new List<string>();
-
     Texture2D currentCapture;
-
-    public List<Sprite> sprites = new List<Sprite>();
 
     // Start is called before the first frame update
     void Start()
     {
         cam = GetComponent<Camera>();
+        database = GameObject.Find("DatabaseInstance").GetComponent<CreateDatabase>().database;
     }
 
     // Update is called once per frame
@@ -48,9 +44,9 @@ public class Photo : MonoBehaviour
             if (hit.transform.CompareTag("Capture"))
             {
                 bool captured = false;
-                foreach (var item in photos)
+                foreach (var item in database.organisms)
                 {
-                    if (item.Object.name == hit.transform.name && item.isCaptured == true)
+                    if (item.name == hit.transform.name && item.isCaptured == true)
                     {
                         captured = true; 
                         break;
@@ -76,20 +72,19 @@ public class Photo : MonoBehaviour
     public int GetObjectId(string text)
     {
         int id = 0;
-        images.Add(text);
-        foreach (PhotoObject a in photos)
+        for (int i = 0; i <= database.organisms.Count-1; i++)
         {
-            if (text == a.Object.name)
+            if (text == database.organisms[i].name)
             {
-                a.isCaptured = true;
+                database.organisms[i].isCaptured = true;
+                id = i;
             }
         }
-        id = images.Count;
         return id;
     }
     public string GetName(int Id)
     {
-        string objectName = photos[Id].Object.name;
+        string objectName = database.organisms[Id].name;
         return objectName;
     }
     public IEnumerator CaptureScreen(int objectid)
@@ -103,15 +98,8 @@ public class Photo : MonoBehaviour
         currentCapture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0, false);
         currentCapture.Apply();
         Sprite sprite = Sprite.Create(currentCapture, new Rect(0, 0, Screen.width, Screen.height), new Vector2(0, 0));
-        sprites.Add(sprite);
-
+        database.organisms[objectid].sprite = sprite;
 
         GameObject.Find("CameraBackground").GetComponent<Canvas>().enabled = true;
-    }
-    [System.Serializable]
-    public class PhotoObject
-    {
-        public GameObject Object;
-        public bool isCaptured;
     }
 }

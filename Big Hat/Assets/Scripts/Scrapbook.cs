@@ -12,9 +12,13 @@ public class Scrapbook : MonoBehaviour
 {
     public GameObject photo;
     public Text ObjectName;
+
+    private Database database;
     // Start is called before the first frame update
     void Start()
     {
+        database = GameObject.Find("DatabaseInstance").GetComponent<CreateDatabase>().database;
+        Debug.Log(database.organisms.Count);
     }
 
     // Update is called once per frame
@@ -24,18 +28,15 @@ public class Scrapbook : MonoBehaviour
     }
     public void LoadImage()
     {
-        for (int i = 0; i < photo.GetComponent<Photo>().images.Count; i++)
+        for (int i = 0; i <= database.organisms.Count-1; i++)
         {
             int id = i + 1;
             GameObject frame = GameObject.Find("Frame" + id);
             if (frame.GetComponent<Image>().sprite == null)
             {
-                List<string> p = photo.GetComponent<Photo>().images;
-                List<Sprite> sprites = photo.GetComponent<Photo>().sprites;
-                Sprite[] spriteArray = sprites.ToArray();
-                if (spriteArray.Length == id)
+                if (database.organisms[i].sprite != null)
                 {
-                    Sprite sp = spriteArray[i];
+                    Sprite sp = database.organisms[i].sprite;
                     frame.GetComponent<Image>().color = Color.white;
                     frame.GetComponent<Image>().sprite = sp;
                 }

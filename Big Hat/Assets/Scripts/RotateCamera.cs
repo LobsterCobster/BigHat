@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class RotateCamera : MonoBehaviour
 {
+    private Database database;
     public float Speed = 5;
     public GameObject crosshair;
     public LayerMask capture;
@@ -21,6 +22,7 @@ public class RotateCamera : MonoBehaviour
         photo = GameObject.Find("Camera");
         cam = photo.GetComponent<Camera>();
         Origin = cam.transform.eulerAngles;
+        database = GameObject.Find("DatabaseInstance").GetComponent<CreateDatabase>().database;
     }
 
     // Update is called once per frame
@@ -31,26 +33,54 @@ public class RotateCamera : MonoBehaviour
     }
     void RotateCam()
     {
-        // ISSUE: GetMouse Button Overlaps with pressing on the Camera Button
-        if (cam.enabled)
+        if (SystemInfo.deviceType == DeviceType.Desktop)
         {
-            if (Input.GetMouseButton(0))
+            if (cam.enabled)
             {
-                transform.eulerAngles += Speed * new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
-                Cursor.lockState = CursorLockMode.Confined;
-                Cursor.visible = false;
+                if (Input.GetMouseButton(0))
+                {
+                    transform.eulerAngles += Speed * new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
+                    Cursor.lockState = CursorLockMode.Confined;
+                    Cursor.visible = false;
+                }
+                else
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                }
             }
             else
             {
+                transform.eulerAngles = Origin;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
         }
-        else
+        else if (SystemInfo.deviceType == DeviceType.Handheld)
         {
-            transform.eulerAngles = Origin;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            foreach (Touch touch in Input.touches)
+            {
+                if (cam.enabled)
+                {
+                    if (touch.phase == TouchPhase.Began)
+                    {
+                        transform.eulerAngles += Speed * Camera.main.ScreenToWorldPoint(touch.position);
+                        Cursor.lockState = CursorLockMode.Confined;
+                        Cursor.visible = false;
+                    }
+                    else
+                    {
+                        Cursor.lockState = CursorLockMode.None;
+                        Cursor.visible = true;
+                    }
+                }
+                else
+                {
+                    transform.eulerAngles = Origin;
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                }
+            }
         }
     }
     private void ObjectSight()
@@ -65,9 +95,9 @@ public class RotateCamera : MonoBehaviour
                 if (hit.transform.tag == "Capture")
                 {
                     bool captured = false;
-                    foreach (var i in gameObject.GetComponent<Photo>().photos)
+                    foreach (var i in database.organisms)
                     {
-                        if (i.Object.name == hit.transform.name  && i.isCaptured == true)
+                        if (i.name == hit.transform.name  && i.isCaptured == true)
                         {
                             captured = true; 
                             break;
