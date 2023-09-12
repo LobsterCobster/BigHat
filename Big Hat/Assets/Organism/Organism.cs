@@ -18,4 +18,5 @@ public class Organism : ScriptableObject
         isCaptured = false;
         sprite = null;
     }
+
 }

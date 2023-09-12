@@ -15,6 +15,11 @@ public class Photo : MonoBehaviour
     private float time;
     Texture2D currentCapture;
 
+    public Scrapbook scrapbook;
+
+    public List<Sprite> sprites;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,9 +87,16 @@ public class Photo : MonoBehaviour
         }
         return id;
     }
-    public string GetName(int Id)
+    public string GetName(Sprite sprite)
     {
-        string objectName = database.organisms[Id].name;
+        string objectName = "";
+        foreach (var item in database.organisms)
+        {
+            if (item.sprite == sprite)
+            {
+                objectName = item.name;
+            }
+        }
         return objectName;
     }
     public IEnumerator CaptureScreen(int objectid)
@@ -99,7 +111,7 @@ public class Photo : MonoBehaviour
         currentCapture.Apply();
         Sprite sprite = Sprite.Create(currentCapture, new Rect(0, 0, Screen.width, Screen.height), new Vector2(0, 0));
         database.organisms[objectid].sprite = sprite;
-
+        sprites.Add(sprite);
         GameObject.Find("CameraBackground").GetComponent<Canvas>().enabled = true;
     }
 }

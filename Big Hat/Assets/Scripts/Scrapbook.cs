@@ -14,11 +14,12 @@ public class Scrapbook : MonoBehaviour
     public Text ObjectName;
 
     private Database database;
+    private List<Sprite> sprites;
     // Start is called before the first frame update
     void Start()
     {
         database = GameObject.Find("DatabaseInstance").GetComponent<CreateDatabase>().database;
-        Debug.Log(database.organisms.Count);
+        sprites = photo.GetComponent<Photo>().sprites;
     }
 
     // Update is called once per frame
@@ -28,19 +29,18 @@ public class Scrapbook : MonoBehaviour
     }
     public void LoadImage()
     {
-        for (int i = 0; i <= database.organisms.Count-1; i++)
+        for (int i = 0; i < sprites.Count; i++)
         {
-            int id = i + 1;
-            GameObject frame = GameObject.Find("Frame" + id);
+            int Id = i + 1;
+            GameObject frame = GameObject.Find("Frame" + Id);
             if (frame.GetComponent<Image>().sprite == null)
             {
-                if (database.organisms[i].sprite != null)
-                {
-                    Sprite sp = database.organisms[i].sprite;
-                    frame.GetComponent<Image>().color = Color.white;
-                    frame.GetComponent<Image>().sprite = sp;
-                }
+                Debug.Log(frame);
+                Sprite sp =  sprites[i];
+                frame.GetComponent<Image>().color = Color.white;
+                frame.GetComponent<Image>().sprite = sp;
             }
+
         }
     }
     public void ClickImage()
@@ -53,7 +53,7 @@ public class Scrapbook : MonoBehaviour
             image.GetComponent<Image>().color = Color.white;
             image.GetComponent<Image>().sprite = frame;
             int id = int.Parse(string.Concat(child.name.Where(Char.IsDigit)));
-            string name = photo.GetComponent<Photo>().GetName(id-1);
+            string name = photo.GetComponent<Photo>().GetName(frame);
             ObjectName.text = name;
         }
         else
