@@ -37,7 +37,7 @@ public class RotateCamera : MonoBehaviour
         {
             if (cam.enabled)
             {
-                if (Input.GetMouseButton(0))
+                if (Input.GetMouseButton(1))
                 {
                     transform.eulerAngles += Speed * new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
                     Cursor.lockState = CursorLockMode.Confined;
@@ -90,7 +90,7 @@ public class RotateCamera : MonoBehaviour
             Image image = crosshair.gameObject.GetComponent<Image>();
             RaycastHit hit;
             Ray ray = new Ray(cam.transform.position, cam.transform.forward);
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, capture))
+            if (Physics.Raycast(ray, out hit, 10, capture))
             {
                 if (hit.transform.tag == "Capture")
                 {
