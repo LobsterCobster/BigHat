@@ -35,7 +35,6 @@ public class Scrapbook : MonoBehaviour
             GameObject frame = GameObject.Find("Frame" + Id);
             if (frame.GetComponent<Image>().sprite == null)
             {
-                Debug.Log(frame);
                 Sprite sp =  sprites[i];
                 frame.GetComponent<Image>().color = Color.white;
                 frame.GetComponent<Image>().sprite = sp;

@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Possum
   m_EditorClassIdentifier: 
   Name: Possum
+  Characteristics:
+  - 
+  - 
+  - 
+  - 
   Description: 
-  isCaptured: 0
-  sprite: {fileID: 0}

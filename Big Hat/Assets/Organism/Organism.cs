@@ -7,6 +7,7 @@ using UnityEngine;
 public class Organism : ScriptableObject
 {
     public string Name;
+    public string[] Characteristics;
     [TextArea]
     public string Description;
 

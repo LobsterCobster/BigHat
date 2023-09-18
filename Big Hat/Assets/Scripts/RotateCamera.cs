@@ -90,7 +90,7 @@ public class RotateCamera : MonoBehaviour
             Image image = crosshair.gameObject.GetComponent<Image>();
             RaycastHit hit;
             Ray ray = new Ray(cam.transform.position, cam.transform.forward);
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, capture))
             {
                 if (hit.transform.tag == "Capture")
                 {

@@ -53,7 +53,6 @@ public class PlayerMove : MonoBehaviour
 
                     if (Physics.Raycast(Camera.main.ScreenPointToRay(touch.position), out hit, Mathf.Infinity))
                     {
-                        Debug.Log(hit.point);
                         CameraPoint = hit.point;
                         CameraPoint.y = 0.5f;
                     }
