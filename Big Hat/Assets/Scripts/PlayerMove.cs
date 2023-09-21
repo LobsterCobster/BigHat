@@ -8,6 +8,7 @@ public class PlayerMove : MonoBehaviour
 {
     public Camera cam;
     public LayerMask ground;
+    public LayerMask interactable;
     Vector3 CameraPoint;
 
     NavMeshAgent agent;
@@ -35,7 +36,11 @@ public class PlayerMove : MonoBehaviour
                     return;
                 RaycastHit hit;
 
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity,ground))
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, interactable))
+                {
+                    Debug.Log("Interactable");
+                }
+                else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity,ground))
                 {
                     CameraPoint = hit.point;
                     CameraPoint.y = 0.5f;
