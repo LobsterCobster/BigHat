@@ -13,8 +13,11 @@ public class Scrapbook : MonoBehaviour
     public GameObject photo;
     public Text ObjectName;
 
+
     private Database database;
     private List<Sprite> sprites;
+
+    public Sprite frame;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +49,7 @@ public class Scrapbook : MonoBehaviour
     {
         GameObject image = GameObject.Find("Frame");
         GameObject child = EventSystem.current.currentSelectedGameObject.transform.GetChild(0).gameObject;
-        Sprite frame = child.GetComponent<Image>().sprite;
+        frame = child.GetComponent<Image>().sprite;
         if (frame != null)
         {
             image.GetComponent<Image>().color = Color.white;

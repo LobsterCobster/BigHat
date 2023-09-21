@@ -13,8 +13,6 @@ public class PlayerMove : MonoBehaviour
 
     private bool isInteracting = false;
 
-    public bool canMove = true;
-
     private GameObject interactObject;
 
 
@@ -35,16 +33,9 @@ public class PlayerMove : MonoBehaviour
     {
         if (isInteracting && (this.transform.position - interactObject.transform.position).magnitude < 1.0f)
         {
-            canMove = false;
-        }
-        if (canMove)
-        {
-            Move();
-        }
-        else
-        {
             Interact();
         }
+        Move();
     }
     public void Move()
     {

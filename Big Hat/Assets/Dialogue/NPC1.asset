@@ -12,6 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94a093fb505a6e4c9e69d8eccdb160d, type: 3}
   m_Name: NPC1
   m_EditorClassIdentifier: 
-  dialogue:
-  - Hello!
-  - How are you today?
+  dialoguesection:
+  - questdialogue:
+    - FIND AN ANIMAL,
+    - WITH CLAWS,
+    - A TAIL,
+    - AND FUR.
+    success:
+    - AHA!
+    - A BRUSHTAIL POSSUM,
+    - HAS BEEN MAKING ALL THAT NOISE,
+    - DID YOU KNOW,
+    - BRUSHTAIL POSSUMS MOSTLY EAT EUCALYPTUS LEAVES.
+    failure:
+    - THATS NOT IT,
+    - KEEP LOOKING!
+  questEnd:
+  - I'LL LET YOU PASS NOW!
