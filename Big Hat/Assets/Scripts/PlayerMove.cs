@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,14 @@ public class PlayerMove : MonoBehaviour
     public Camera cam;
     public LayerMask ground;
     public LayerMask interactable;
+
+    private bool isInteracting = false;
+
+    public bool canMove = true;
+
+    private GameObject interactObject;
+
+
     Vector3 CameraPoint;
 
     NavMeshAgent agent;
@@ -24,13 +33,25 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (isInteracting && (this.transform.position - interactObject.transform.position).magnitude < 1.0f)
+        {
+            canMove = false;
+        }
+        if (canMove)
+        {
+            Move();
+        }
+        else
+        {
+            Interact();
+        }
     }
     public void Move()
     {
+
         if (SystemInfo.deviceType == DeviceType.Desktop)
         {
-            if (!cam.enabled && Input.GetMouseButtonDown(0))
+            if (!cam.enabled && Input.GetMouseButtonDown(0)) 
             {
                 if (EventSystem.current.IsPointerOverGameObject())
                     return;
@@ -38,9 +59,13 @@ public class PlayerMove : MonoBehaviour
 
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, interactable))
                 {
-                    Debug.Log("Interactable");
+                    CameraPoint = hit.point;
+                    CameraPoint.y = 0.5f;
+                    isInteracting = true;
+                    interactObject = hit.transform.gameObject;
+                    
                 }
-                else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity,ground))
+                else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, ground))
                 {
                     CameraPoint = hit.point;
                     CameraPoint.y = 0.5f;
@@ -69,5 +94,13 @@ public class PlayerMove : MonoBehaviour
             agent.destination = CameraPoint;
         }
 
+    }
+    public void Interact()
+    {
+        if (isInteracting)
+        {
+            isInteracting = false;
+            interactObject.GetComponent<Dialogue>().Talk();
+        }
     }
 }
