@@ -14,6 +14,9 @@ public class Dialogue : MonoBehaviour
 
     public GameObject player;
 
+    [SerializeField] private GameObject dialogueBox;
+    [SerializeField] private TextMeshProUGUI dialogueText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,20 +31,26 @@ public class Dialogue : MonoBehaviour
     public void Talk()
     {
         dialogueEnd = false;
+        dialogueBox.SetActive(true);
         StartCoroutine(Example());
-        
     }
     IEnumerator Example()
     {
         foreach (var script in script)
         {
-            Debug.Log(script.ToString());
-            yield return new WaitForSeconds(charactersPerSecond);
+            string textBuffer = null;
+            foreach (char c in script)
+            {
+                textBuffer += c;
+                dialogueText.text = textBuffer;
+                yield return new WaitForSeconds(1 / charactersPerSecond);
+            }
+            yield return new WaitForSeconds(1);
         }
         dialogueEnd = true;
         if (dialogueEnd)
         {
-            Debug.Log("End");
+            dialogueBox.SetActive(false);
             player.GetComponent<PlayerMove>().canMove = true;
         }
 
