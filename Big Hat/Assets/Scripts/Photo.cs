@@ -19,6 +19,8 @@ public class Photo : MonoBehaviour
 
     public List<Sprite> sprites;
 
+    public LayerMask capture;
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +46,7 @@ public class Photo : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, capture))
         {
             if (hit.transform.CompareTag("Capture"))
             {
