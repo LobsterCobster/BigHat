@@ -11,6 +11,8 @@ public class Dialogue : MonoBehaviour
 
     public GameObject Scrapbook;
 
+    public GameObject GameManager;
+
     public DialogueTree dialoguetree;
 
     float charactersPerSecond = 10;
@@ -24,6 +26,8 @@ public class Dialogue : MonoBehaviour
     public GameObject player;
 
     private int lineNumber = 0;
+
+    private bool success;
 
     string[] script;
 
@@ -46,11 +50,15 @@ public class Dialogue : MonoBehaviour
             dialogueStart = false;
 
         }
+        if (dialoguetree.dialoguesection.Length <= questNumber)
+        {
+            questNumber = 0;
+            End();
+        }
     }
     public void Determine()
     {
-        Scrapbook.GetComponent<Canvas>().enabled = false;
-        Time.timeScale = 1;
+        GameManager.GetComponent<ChangeScene>().openCanvas("ScrapBook");
         Sprite frame = Scrapbook.GetComponent<Scrapbook>().frame;
         string name = photo.GetComponent<Photo>().GetName(frame);
         if (name == dialoguetree.dialoguesection[questNumber].answer)
@@ -71,6 +79,7 @@ public class Dialogue : MonoBehaviour
     {
         script = dialoguetree.dialoguesection[questNumber].success;
         dialogueStart = true;
+        success = true;
     }
     public void Failure()
     {
@@ -81,6 +90,7 @@ public class Dialogue : MonoBehaviour
     {
         script = dialoguetree.questEnd;
         dialogueStart = true;
+        questsComplete = true;
     }
     IEnumerator Quest(string[] script)
     {
@@ -97,6 +107,11 @@ public class Dialogue : MonoBehaviour
         }
         dialogueBox.SetActive(false);
         player.GetComponent<PlayerMove>().enabled = true;
+
+        if (success)
+        {
+            questNumber++;
+        }
 
     }
 }

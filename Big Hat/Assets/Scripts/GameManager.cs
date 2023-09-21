@@ -27,4 +27,9 @@ public class GameManager : MonoBehaviour
             cameraCanvas.enabled = false;
         }
     }
+    public void GetNPCDialogue()
+    {
+        GameObject NPC = GameObject.FindGameObjectWithTag("NPC");
+        NPC.GetComponent<Dialogue>().Determine();
+    }
 }
