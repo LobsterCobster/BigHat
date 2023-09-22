@@ -45,14 +45,17 @@ public class Dialogue : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (dialogueText.text == script[index])
+            if (script != null)
             {
-                NextLine();
-            }
-            else
-            {
-                StopAllCoroutines();
-                dialogueText.text = script[index];
+                if (dialogueText.text == script[index])
+                {
+                    NextLine();
+                }
+                else
+                {
+                    StopAllCoroutines();
+                    dialogueText.text = script[index];
+                }
             }
         }
         if (dialoguetree.dialoguesection.Length <= questNumber)
@@ -77,6 +80,7 @@ public class Dialogue : MonoBehaviour
     }
     public void StartDialogue()
     {
+        StopAllCoroutines();
         player.GetComponent<PlayerMove>().enabled = false;
         dialogueBox.SetActive(true);
         index = 0;

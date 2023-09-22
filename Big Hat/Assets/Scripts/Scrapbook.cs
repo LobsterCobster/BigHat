@@ -57,12 +57,14 @@ public class Scrapbook : MonoBehaviour
             int id = int.Parse(string.Concat(child.name.Where(Char.IsDigit)));
             string name = photo.GetComponent<Photo>().GetName(frame);
             ObjectName.text = name;
+            transform.Find("Submit").GetComponent<Button>().interactable = true;
         }
         else
         {
             image.GetComponent<Image>().color = Color.clear;
             image.GetComponent<Image>().sprite = null;
             ObjectName.text = "";
+            transform.Find("Submit").GetComponent<Button>().interactable = false;
         }
     }
 }
