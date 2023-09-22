@@ -30,3 +30,4 @@ MonoBehaviour:
     - KEEP LOOKING!
   questEnd:
   - I'LL LET YOU PASS NOW!
+  nextLevel: Level2

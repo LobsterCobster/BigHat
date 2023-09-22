@@ -1,3 +1,4 @@
+using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -21,8 +22,6 @@ public class Dialogue : MonoBehaviour
 
     private bool questsComplete = false;
 
-    public bool dialogueStart;
-
     public GameObject player;
 
     private int lineNumber = 0;
@@ -30,6 +29,8 @@ public class Dialogue : MonoBehaviour
     private bool success;
 
     string[] script;
+
+    public int index;
 
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TextMeshProUGUI dialogueText;
@@ -42,13 +43,17 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dialogueStart)
+        if (Input.GetMouseButtonDown(0))
         {
-            player.GetComponent<PlayerMove>().enabled = false;
-            dialogueBox.SetActive(true);
-            StartCoroutine(Quest(script));
-            dialogueStart = false;
-
+            if (dialogueText.text == script[index])
+            {
+                NextLine();
+            }
+            else
+            {
+                StopAllCoroutines();
+                dialogueText.text = script[index];
+            }
         }
         if (dialoguetree.dialoguesection.Length <= questNumber)
         {
@@ -70,48 +75,63 @@ public class Dialogue : MonoBehaviour
             Failure();
         }
     }
+    public void StartDialogue()
+    {
+        player.GetComponent<PlayerMove>().enabled = false;
+        dialogueBox.SetActive(true);
+        index = 0;
+        dialogueText.text = string.Empty;
+        StartCoroutine(Quest(script));
+    }
     public void Talk()
     {
         script = dialoguetree.dialoguesection[questNumber].questdialogue;
-        dialogueStart = true;
+        StartDialogue();
     }
     public void Success()
     {
         script = dialoguetree.dialoguesection[questNumber].success;
-        dialogueStart = true;
         success = true;
+        StartDialogue();
     }
     public void Failure()
     {
         script = dialoguetree.dialoguesection[questNumber].failure;
-        dialogueStart = true;
+        StartDialogue();
     }
     public void End()
     {
         script = dialoguetree.questEnd;
-        dialogueStart = true;
         questsComplete = true;
+        StartDialogue();
     }
     IEnumerator Quest(string[] script)
     {
-        foreach (var line in script)
+        foreach (char c in script[index].ToCharArray())
         {
-            string textBuffer = null;
-            foreach (char c in line)
+            dialogueText.text += c;
+            yield return new WaitForSeconds(1 / charactersPerSecond);
+        }
+
+    }
+    void NextLine()
+    {
+        if (index < script.Length - 1)
+        {
+            index++;
+            dialogueText.text = string.Empty;
+            StartCoroutine(Quest(script));
+        }
+        else
+        {
+            dialogueText.text = string.Empty;
+            dialogueBox.SetActive(false);
+            player.GetComponent<PlayerMove>().enabled = true;
+            if (success)
             {
-                textBuffer += c;
-                dialogueText.text = textBuffer;
-                yield return new WaitForSeconds(1 / charactersPerSecond);
+                questNumber++;
+                success = false;
             }
-            yield return new WaitForSeconds(1);
         }
-        dialogueBox.SetActive(false);
-        player.GetComponent<PlayerMove>().enabled = true;
-
-        if (success)
-        {
-            questNumber++;
-        }
-
     }
 }
