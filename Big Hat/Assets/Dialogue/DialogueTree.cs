@@ -10,8 +10,6 @@ public class DialogueTree : ScriptableObject
     [SerializeField]
     [TextArea]
     public string[] questEnd;
-    [SerializeField]
-    public string nextLevel;
     [System.Serializable]
     public struct DialogueSection
     {

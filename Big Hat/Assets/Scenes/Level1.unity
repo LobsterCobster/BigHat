@@ -27613,8 +27613,8 @@ MonoBehaviour:
   Scrapbook: {fileID: 1619275272}
   GameManager: {fileID: 2035478210}
   dialoguetree: {fileID: 11400000, guid: 598e9c1906996cf4c8f5ec59d57959c5, type: 2}
-  dialogueStart: 0
   player: {fileID: 554485940}
+  index: 0
   dialogueBox: {fileID: 484008395}
   dialogueText: {fileID: 1494988282}
 --- !u!1001 &1326036005
@@ -33696,7 +33696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1427454550
 RectTransform:
   m_ObjectHideFlags: 0

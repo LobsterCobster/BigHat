@@ -85,8 +85,17 @@ public class Dialogue : MonoBehaviour
     }
     public void Talk()
     {
-        script = dialoguetree.dialoguesection[questNumber].questdialogue;
-        StartDialogue();
+        if (!questsComplete)
+        {
+            script = dialoguetree.dialoguesection[questNumber].questdialogue;
+            Scrapbook.transform.Find("Submit").gameObject.SetActive(true);
+            StartDialogue();
+        }
+        else
+        {
+            script = dialoguetree.questEnd;
+            StartDialogue();
+        }
     }
     public void Success()
     {
@@ -102,6 +111,8 @@ public class Dialogue : MonoBehaviour
     public void End()
     {
         script = dialoguetree.questEnd;
+        questsComplete = true;
+        Scrapbook.transform.Find("Submit").gameObject.SetActive(false);
         questsComplete = true;
         StartDialogue();
     }
