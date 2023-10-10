@@ -6,6 +6,7 @@ using UnityEngine;
 public class ChangeView : MonoBehaviour
 {
     public Camera cam;
+    public Camera Maincam;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +22,12 @@ public class ChangeView : MonoBehaviour
     {
         if (cam.enabled == false)
         {
+            Maincam.enabled = false;
             cam.enabled = true;
         }
         else
         {
+            Maincam.enabled = true;
             cam.enabled = false;
         }
     }

@@ -48,12 +48,13 @@ public class Photo : MonoBehaviour
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, capture))
         {
-            if (hit.transform.CompareTag("Capture"))
+            if (hit.transform.root.CompareTag("Capture"))
             {
                 bool captured = false;
+                string name = hit.transform.root.name;
                 foreach (var item in database.organisms)
                 {
-                    if (item.name == hit.transform.name && item.isCaptured == true)
+                    if (item.name == name && item.isCaptured == true)
                     {
                         captured = true; 
                         break;
@@ -61,9 +62,9 @@ public class Photo : MonoBehaviour
                 }
                 if (!captured)
                 {
-                    int objectid = GetObjectId(hit.transform.name);
+                    int objectid = GetObjectId(name);
                     StartCoroutine(CaptureScreen(objectid));
-                    DisplayText(hit.transform.name);
+                    DisplayText(name);
 
                 }
             }

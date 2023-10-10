@@ -92,12 +92,13 @@ public class RotateCamera : MonoBehaviour
             Ray ray = new Ray(cam.transform.position, cam.transform.forward);
             if (Physics.Raycast(ray, out hit, 10, capture))
             {
-                if (hit.transform.tag == "Capture")
+                if (hit.transform.root.tag == "Capture")
                 {
                     bool captured = false;
+                    Debug.Log(hit.transform.root.name);
                     foreach (var i in database.organisms)
                     {
-                        if (i.name == hit.transform.name  && i.isCaptured == true)
+                        if (i.name == hit.transform.root.name  && i.isCaptured == true)
                         {
                             captured = true; 
                             break;
