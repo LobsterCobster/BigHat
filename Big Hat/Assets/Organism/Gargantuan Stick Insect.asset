@@ -10,12 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b41ee6a87a170e34c8b93b555f2efbd5, type: 3}
-  m_Name: Possum
+  m_Name: Gargantuan Stick Insect
   m_EditorClassIdentifier: 
-  Name: Possum
-  Characteristics:
-  - 
-  - 
-  - 
-  - 
-  Description: 
+  Name: 'Gargantuan Stick Insect '
+  ScientificName: Ctenomorpha gargantua

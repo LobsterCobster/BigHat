@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b41ee6a87a170e34c8b93b555f2efbd5, type: 3}
-  m_Name: Blue Tongue
+  m_Name: Brushtail Possum
   m_EditorClassIdentifier: 
-  Name: Blue Tongue
-  ScientificName: Tiliqua scincoides
+  Name: Brushtail Possum
+  ScientificName: Trichosurus vulpecula

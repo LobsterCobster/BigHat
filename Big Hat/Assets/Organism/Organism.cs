@@ -8,9 +8,6 @@ public class Organism : ScriptableObject
 {
     public string Name;
     public string ScientificName;
-    public string[] Characteristics;
-    [TextArea]
-    public string Description;
 
     [NonSerialized] public bool isCaptured = false;
     [NonSerialized] public Sprite sprite;
