@@ -18,16 +18,30 @@ MonoBehaviour:
     - WITH CLAWS,
     - A TAIL,
     - AND FUR.
-    answer: Possum
+    answer: Brushtail Possum
     success:
     - AHA!
     - A BRUSHTAIL POSSUM,
     - HAS BEEN MAKING ALL THAT NOISE,
+    fact:
     - DID YOU KNOW,
     - BRUSHTAIL POSSUMS MOSTLY EAT EUCALYPTUS LEAVES.
     failure:
     - THATS NOT IT,
     - KEEP LOOKING!
+  - questdialogue:
+    - PHOTOGRAPH AN ANIMAL,
+    - THAT HAS CLAWS,
+    - A TAIL,
+    - AND SCALES.
+    answer: Blue Tongue
+    success:
+    - WHY IS THE BLUETONGUE'S TONGUE BLUE?
+    fact:
+    - DID YOU KNOW,
+    - A BLUETONGUE CAN LIVE UP TO 20 YEARS.
+    failure:
+    - THATS NOT IT,
+    - KEEP LOOKING!
   questEnd:
   - I'LL LET YOU PASS NOW!
-  nextLevel: Level2

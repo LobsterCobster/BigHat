@@ -19,6 +19,8 @@ public class DialogueTree : ScriptableObject
         [TextArea]
         public string[] success;
         [TextArea]
+        public string[] fact;
+        [TextArea]
         public string[] failure;
     }
 }

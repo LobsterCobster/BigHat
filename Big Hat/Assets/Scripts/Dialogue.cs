@@ -28,6 +28,8 @@ public class Dialogue : MonoBehaviour
 
     private bool success;
 
+    private bool fact;
+
     string[] script;
 
     public int index;
@@ -104,6 +106,12 @@ public class Dialogue : MonoBehaviour
     public void Success()
     {
         script = dialoguetree.dialoguesection[questNumber].success;
+        fact = true;
+        StartDialogue();
+    }
+    public void Fact()
+    {
+        script = dialoguetree.dialoguesection[questNumber].fact;
         success = true;
         StartDialogue();
     }
@@ -118,6 +126,7 @@ public class Dialogue : MonoBehaviour
         questsComplete = true;
         Scrapbook.transform.Find("Submit").gameObject.SetActive(false);
         questsComplete = true;
+        GameObject.Find("Exclamation").gameObject.SetActive(false);
         StartDialogue();
     }
     IEnumerator Quest(string[] script)
@@ -146,6 +155,11 @@ public class Dialogue : MonoBehaviour
             {
                 questNumber++;
                 success = false;
+            }
+            if (fact)
+            {
+                fact = false;
+                Fact();
             }
         }
     }
