@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 3849403}
   - component: {fileID: 3849405}
   - component: {fileID: 3849404}
+  - component: {fileID: 3849406}
   m_Layer: 5
   m_Name: Frame2
   m_TagString: Untagged
@@ -241,6 +242,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3849402}
   m_CullTransparentMesh: 1
+--- !u!114 &3849406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3849402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad383a792357644982e3ed3536d5f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  organismReference: 
 --- !u!1 &6049434
 GameObject:
   m_ObjectHideFlags: 0
@@ -10481,10 +10495,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2035478213}
-        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: openCanvas
-        m_Mode: 5
+      - m_Target: {fileID: 1619275277}
+        m_TargetAssemblyTypeName: Scrapbook, Assembly-CSharp
+        m_MethodName: PageRight
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -16077,6 +16091,7 @@ GameObject:
   - component: {fileID: 695360357}
   - component: {fileID: 695360359}
   - component: {fileID: 695360358}
+  - component: {fileID: 695360360}
   m_Layer: 5
   m_Name: Frame
   m_TagString: Untagged
@@ -16142,6 +16157,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 695360356}
   m_CullTransparentMesh: 1
+--- !u!114 &695360360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695360356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad383a792357644982e3ed3536d5f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  organismReference: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -19838,10 +19866,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2035478213}
-        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: openCanvas
-        m_Mode: 5
+      - m_Target: {fileID: 1619275277}
+        m_TargetAssemblyTypeName: Scrapbook, Assembly-CSharp
+        m_MethodName: PageLeft
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -26954,6 +26982,7 @@ GameObject:
   - component: {fileID: 1298982085}
   - component: {fileID: 1298982087}
   - component: {fileID: 1298982086}
+  - component: {fileID: 1298982088}
   m_Layer: 5
   m_Name: Frame5
   m_TagString: Untagged
@@ -27019,6 +27048,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298982084}
   m_CullTransparentMesh: 1
+--- !u!114 &1298982088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298982084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad383a792357644982e3ed3536d5f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  organismReference: 
 --- !u!1001 &1300571018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32922,6 +32964,7 @@ GameObject:
   - component: {fileID: 1388978724}
   - component: {fileID: 1388978726}
   - component: {fileID: 1388978725}
+  - component: {fileID: 1388978727}
   m_Layer: 5
   m_Name: Frame3
   m_TagString: Untagged
@@ -32987,6 +33030,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388978723}
   m_CullTransparentMesh: 1
+--- !u!114 &1388978727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388978723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad383a792357644982e3ed3536d5f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  organismReference: 
 --- !u!4 &1396929469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 739f2be780813af46bcf754b233f7d85, type: 3}
@@ -36583,7 +36639,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619275272}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -36645,6 +36701,7 @@ MonoBehaviour:
   photo: {fileID: 1702257623}
   ObjectName: {fileID: 1466914882}
   frame: {fileID: 0}
+  sprites: []
 --- !u!4 &1623150864 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 106274520711909747, guid: ecd11c03defda6b4ea399d284d3c6b28, type: 3}
@@ -36661,6 +36718,7 @@ GameObject:
   - component: {fileID: 1625057906}
   - component: {fileID: 1625057908}
   - component: {fileID: 1625057907}
+  - component: {fileID: 1625057909}
   m_Layer: 5
   m_Name: Frame1
   m_TagString: Untagged
@@ -36726,6 +36784,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625057905}
   m_CullTransparentMesh: 1
+--- !u!114 &1625057909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625057905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad383a792357644982e3ed3536d5f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  organismReference: 
 --- !u!1 &1633565136
 GameObject:
   m_ObjectHideFlags: 0
@@ -38149,10 +38220,14 @@ MonoBehaviour:
   camtext: {fileID: 947870463}
   timer: 0
   scrapbook: {fileID: 0}
-  sprites: []
   capture:
     serializedVersion: 2
     m_Bits: 64
+  spriteList:
+    Level1: []
+    Level2: []
+    Level3: []
+    Miscellaneous: []
 --- !u!114 &1702257629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39129,6 +39204,7 @@ GameObject:
   - component: {fileID: 1733672854}
   - component: {fileID: 1733672856}
   - component: {fileID: 1733672855}
+  - component: {fileID: 1733672857}
   m_Layer: 5
   m_Name: Frame4
   m_TagString: Untagged
@@ -39194,6 +39270,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733672853}
   m_CullTransparentMesh: 1
+--- !u!114 &1733672857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733672853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad383a792357644982e3ed3536d5f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  organismReference: 
 --- !u!1 &1738975919
 GameObject:
   m_ObjectHideFlags: 0
@@ -44096,6 +44185,7 @@ GameObject:
   - component: {fileID: 2087375847}
   - component: {fileID: 2087375849}
   - component: {fileID: 2087375848}
+  - component: {fileID: 2087375850}
   m_Layer: 5
   m_Name: Frame6
   m_TagString: Untagged
@@ -44161,6 +44251,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087375846}
   m_CullTransparentMesh: 1
+--- !u!114 &2087375850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087375846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad383a792357644982e3ed3536d5f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  organismReference: 
 --- !u!4 &2094792999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 335105781094324751, guid: 496e9b2e5b775f34891f15d77e145d7e, type: 3}

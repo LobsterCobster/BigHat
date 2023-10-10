@@ -95,7 +95,6 @@ public class RotateCamera : MonoBehaviour
                 if (hit.transform.root.tag == "Capture")
                 {
                     bool captured = false;
-                    Debug.Log(hit.transform.root.name);
                     foreach (var i in database.organisms)
                     {
                         if (i.name == hit.transform.root.name  && i.isCaptured == true)

@@ -3,7 +3,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static Photo;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Photo : MonoBehaviour
 {
@@ -17,10 +21,8 @@ public class Photo : MonoBehaviour
 
     public Scrapbook scrapbook;
 
-    public List<Sprite> sprites;
-
     public LayerMask capture;
-
+    public SpriteList spriteList = new SpriteList();
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +46,8 @@ public class Photo : MonoBehaviour
     }
     public void Capture()
     {
+        int level = 0;
+        string name = "";
         RaycastHit hit;
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, capture))
@@ -51,24 +55,54 @@ public class Photo : MonoBehaviour
             if (hit.transform.root.CompareTag("Capture"))
             {
                 bool captured = false;
-                string name = hit.transform.root.name;
+                name = hit.transform.root.name;
                 foreach (var item in database.organisms)
                 {
+                    Debug.Log(item.name);
+                    Debug.Log(name);
+                    Debug.Log(item.isCaptured);
                     if (item.name == name && item.isCaptured == true)
                     {
-                        captured = true; 
+                        captured = true;
+                        break;
+                    }
+                    else if (item.name == name && item.isCaptured == false)
+                    {
+                        item.isCaptured = true;
                         break;
                     }
                 }
                 if (!captured)
                 {
-                    int objectid = GetObjectId(name);
-                    StartCoroutine(CaptureScreen(objectid));
-                    DisplayText(name);
-
+                    string scene = SceneManager.GetActiveScene().name;
+                    if (scene == "Level1")
+                    {
+                        level = 1;
+                    }
+                    else if (scene == "Level2")
+                    {
+                        level = 2;
+                    }
+                    else if (scene == "Level3")
+                    {
+                        level = 3;
+                    }
+                    
+                }
+                else
+                {
+                    level = 0;
                 }
             }
         }
+        else
+        {
+            level = 0;
+            name = spriteList.Miscellaneous.Count.ToString();
+        }
+        Debug.Log(level);
+        StartCoroutine(CaptureScreen(level, name));
+        DisplayText(name);
     }
     public void DisplayText(string text)
     {
@@ -77,44 +111,54 @@ public class Photo : MonoBehaviour
         timer = true;
         time = 0f;
     }
-    public int GetObjectId(string text)
-    {
-        int id = 0;
-        for (int i = 0; i <= database.organisms.Count-1; i++)
-        {
-            if (text == database.organisms[i].name)
-            {
-                database.organisms[i].isCaptured = true;
-                id = i;
-            }
-        }
-        return id;
-    }
-    public string GetName(Sprite sprite)
-    {
-        string objectName = "";
-        foreach (var item in database.organisms)
-        {
-            if (item.sprite == sprite)
-            {
-                objectName = item.name;
-            }
-        }
-        return objectName;
-    }
-    public IEnumerator CaptureScreen(int objectid)
+    public IEnumerator CaptureScreen(int level, string name)
     {
         yield return null;
         GameObject.Find("CameraBackground").GetComponent<Canvas>().enabled = false;
 
         yield return new WaitForEndOfFrame();
 
-        currentCapture = new Texture2D(Screen.width,Screen.height, TextureFormat.RGB24, false);
+        currentCapture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
         currentCapture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0, false);
         currentCapture.Apply();
         Sprite sprite = Sprite.Create(currentCapture, new Rect(0, 0, Screen.width, Screen.height), new Vector2(0, 0));
-        database.organisms[objectid].sprite = sprite;
-        sprites.Add(sprite);
+
+        SpriteReference spriteReference = new SpriteReference();
+        spriteReference.image = sprite;
+        spriteReference.name = name;
+        if (level == 1)
+        {
+            spriteList.Level1.Add(spriteReference);
+        }
+        else if (level == 2)
+        {
+            spriteList.Level2.Add(spriteReference);
+        }
+        else if (level == 3)
+        {
+            spriteList.Level3.Add(spriteReference);
+        }
+        else
+        {
+            spriteList.Miscellaneous.Add(spriteReference);
+        }
         GameObject.Find("CameraBackground").GetComponent<Canvas>().enabled = true;
     }
+
+    [System.Serializable]
+    public class SpriteList
+    {
+        public List<SpriteReference> Level1;
+        public List<SpriteReference> Level2;
+        public List<SpriteReference> Level3;
+        public List<SpriteReference> Miscellaneous;
+
+    }
+    [System.Serializable]
+    public class SpriteReference
+    {
+        public Sprite image;
+        public string name;
+    }
 }
+

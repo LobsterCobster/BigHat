@@ -10,12 +10,10 @@ public class Organism : ScriptableObject
     public string ScientificName;
 
     [NonSerialized] public bool isCaptured = false;
-    [NonSerialized] public Sprite sprite;
 
     public void OnDisable()
     {
         isCaptured = false;
-        sprite = null;
     }
 
 }

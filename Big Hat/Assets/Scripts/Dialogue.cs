@@ -2,6 +2,7 @@ using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
@@ -69,8 +70,7 @@ public class Dialogue : MonoBehaviour
     public void Determine()
     {
         GameManager.GetComponent<ChangeScene>().openCanvas("ScrapBook");
-        Sprite frame = Scrapbook.GetComponent<Scrapbook>().frame;
-        string name = photo.GetComponent<Photo>().GetName(frame);
+        string name = GameObject.Find("Frame").GetComponent<FrameReference>().organismReference;
         if (name == dialoguetree.dialoguesection[questNumber].answer)
         {
             Success();
