@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class Dialogue : MonoBehaviour
 {
+    public GameObject ExclamationPoint;
 
     public GameObject photo;
 
@@ -25,8 +27,6 @@ public class Dialogue : MonoBehaviour
 
     public GameObject player;
 
-    private int lineNumber = 0;
-
     private bool success;
 
     private bool fact;
@@ -34,6 +34,8 @@ public class Dialogue : MonoBehaviour
     string[] script;
 
     public int index;
+
+    private bool missionActive = false;
 
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TextMeshProUGUI dialogueText;
@@ -46,6 +48,7 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        QuestActive();
         if (Input.GetMouseButtonDown(0))
         {
             if (script != null)
@@ -94,7 +97,7 @@ public class Dialogue : MonoBehaviour
         if (!questsComplete)
         {
             script = dialoguetree.dialoguesection[questNumber].questdialogue;
-            Scrapbook.transform.Find("Submit").gameObject.SetActive(true);
+            missionActive = true;
             StartDialogue();
         }
         else
@@ -106,6 +109,7 @@ public class Dialogue : MonoBehaviour
     public void Success()
     {
         script = dialoguetree.dialoguesection[questNumber].success;
+        missionActive = false;
         fact = true;
         StartDialogue();
     }
@@ -123,9 +127,7 @@ public class Dialogue : MonoBehaviour
     public void End()
     {
         script = dialoguetree.questEnd;
-        Scrapbook.transform.Find("Submit").gameObject.SetActive(false);
         questsComplete = true;
-        GameObject.Find("Exclamation").gameObject.SetActive(false);
         gameManager.GetComponent<GameManager>().QuestComplete();
         StartDialogue();
     }
@@ -161,6 +163,24 @@ public class Dialogue : MonoBehaviour
                 fact = false;
                 Fact();
             }
+        }
+    }
+    public void QuestActive()
+    {
+        if (missionActive)
+        {
+            Scrapbook.transform.Find("Submit").gameObject.SetActive(true);
+            ExclamationPoint.gameObject.SetActive(true);
+        }
+        else if (!missionActive & !questsComplete)
+        {
+            Scrapbook.transform.Find("Submit").gameObject.SetActive(false);
+            ExclamationPoint.gameObject.SetActive(true);
+        }
+        else 
+        {
+            Scrapbook.transform.Find("Submit").gameObject.SetActive(false);
+            ExclamationPoint.gameObject.SetActive(false);
         }
     }
 }
