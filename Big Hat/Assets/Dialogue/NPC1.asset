@@ -30,6 +30,22 @@ MonoBehaviour:
     - THATS NOT IT,
     - KEEP LOOKING!
   - questdialogue:
+    - LOOK FOR AN ANIMAL,
+    - WITH WINGS,
+    - AND HAIR,
+    - THAT MAKES HONEY.
+    answer: European Honeybee
+    success:
+    - GREAT!
+    - A EUROPEAN HONEYBEE.
+    - I LIKE HONEY.
+    fact:
+    - DID YOU KNOW,
+    - NOT ALL EUROPEAN HONEYBEES HAVE STINGERS
+    failure:
+    - THATS NOT IT,
+    - KEEP LOOKING!
+  - questdialogue:
     - PHOTOGRAPH AN ANIMAL,
     - THAT HAS CLAWS,
     - A TAIL,

@@ -15,10 +15,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
-        photoSO.spriteList.Level1.Clear();
-        photoSO.spriteList.Level2.Clear();
-        photoSO.spriteList.Level3.Clear();
-        photoSO.spriteList.Miscellaneous.Clear();
     }
 
     // Update is called once per frame
