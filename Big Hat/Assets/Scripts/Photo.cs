@@ -22,7 +22,9 @@ public class Photo : MonoBehaviour
     public Scrapbook scrapbook;
 
     public LayerMask capture;
-    public SpriteList spriteList = new SpriteList();
+
+    [SerializeField]
+    private PhotoSO photoSO;
 
     // Start is called before the first frame update
     void Start()
@@ -74,7 +76,7 @@ public class Photo : MonoBehaviour
         }
         else
         {
-            name = spriteList.Miscellaneous.Count.ToString();
+            name = photoSO.spriteList.Miscellaneous.Count.ToString();
         }
         StartCoroutine(CaptureScreen(level, name));
         DisplayText(name);
@@ -98,42 +100,26 @@ public class Photo : MonoBehaviour
         currentCapture.Apply();
         Sprite sprite = Sprite.Create(currentCapture, new Rect(0, 0, Screen.width, Screen.height), new Vector2(0, 0));
 
-        SpriteReference spriteReference = new SpriteReference();
+        PhotoSO.SpriteReference spriteReference = new PhotoSO.SpriteReference();
         spriteReference.image = sprite;
         spriteReference.name = name;
         if (level == Organism.Level.Level1)
         {
-            spriteList.Level1.Add(spriteReference);
+            photoSO.spriteList.Level1.Add(spriteReference);
         }
         else if (level == Organism.Level.Level2)
         {
-            spriteList.Level2.Add(spriteReference);
+            photoSO.spriteList.Level2.Add(spriteReference);
         }
         else if (level == Organism.Level.Level3)
         {
-            spriteList.Level3.Add(spriteReference);
+            photoSO.spriteList.Level3.Add(spriteReference);
         }
         else
         {
-            spriteList.Miscellaneous.Add(spriteReference);
+            photoSO.spriteList.Miscellaneous.Add(spriteReference);
         }
         GameObject.Find("CameraBackground").GetComponent<Canvas>().enabled = true;
-    }
-
-    [System.Serializable]
-    public class SpriteList
-    {
-        public List<SpriteReference> Level1;
-        public List<SpriteReference> Level2;
-        public List<SpriteReference> Level3;
-        public List<SpriteReference> Miscellaneous;
-
-    }
-    [System.Serializable]
-    public class SpriteReference
-    {
-        public Sprite image;
-        public string name;
     }
 }
 

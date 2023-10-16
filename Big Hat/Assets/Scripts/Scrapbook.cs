@@ -19,19 +19,19 @@ public class Scrapbook : MonoBehaviour
 
 
     private Database database;
-    private SpriteList spriteList = new SpriteList();
+    [SerializeField]
+    private PhotoSO photoSO;
 
     public Sprite frame;
 
     private int pageNumber;
 
-    public List<SpriteReference> sprites = new List<SpriteReference>();
+    public List<PhotoSO.SpriteReference> sprites = new List<PhotoSO.SpriteReference>();
 
 
     // Start is called before the first frame update
     void Start()
     {
-        spriteList = photo.GetComponent<Photo>().spriteList;
         string scene = SceneManager.GetActiveScene().name;
         if (scene == "Level1")
         {
@@ -52,19 +52,19 @@ public class Scrapbook : MonoBehaviour
     {
         if (pageNumber == 1)
         {
-            sprites = spriteList.Level1.ToList();
+            sprites = photoSO.spriteList.Level1.ToList();
         }
         else if (pageNumber == 2)
         {
-            sprites = spriteList.Level2.ToList();
+            sprites = photoSO.spriteList.Level2.ToList();
         }
         else if (pageNumber == 3)
         {
-            sprites = spriteList.Level3.ToList();
+            sprites = photoSO.spriteList.Level3.ToList();
         }
         else
         {
-            sprites = spriteList.Miscellaneous.ToList();
+            sprites = photoSO.spriteList.Miscellaneous.ToList();
         }
         LoadImage();
         LoadPageTitle();
@@ -126,12 +126,15 @@ public class Scrapbook : MonoBehaviour
         {
             image.GetComponent<Image>().color = Color.white;
             image.GetComponent<Image>().sprite = frame;
-            image.GetComponent<FrameReference>().GetOrganismReference(child.GetComponent<FrameReference>().organism.Name);
-            int id = int.Parse(string.Concat(child.name.Where(Char.IsDigit)));
-            string name = image.GetComponent<FrameReference>().organism.Name;
-            string scientificName = image.GetComponent<FrameReference>().organism.ScientificName;
-            ObjectName.text = name;
-            ScientificName.text = scientificName;
+            if (image.GetComponent<FrameReference>().mis == false)
+            {
+                image.GetComponent<FrameReference>().GetOrganismReference(child.GetComponent<FrameReference>().organism.Name);
+                int id = int.Parse(string.Concat(child.name.Where(Char.IsDigit)));
+                string name = image.GetComponent<FrameReference>().organism.Name;
+                string scientificName = image.GetComponent<FrameReference>().organism.ScientificName;
+                ObjectName.text = name;
+                ScientificName.text = scientificName;
+            }
             transform.Find("Submit").GetComponent<Button>().interactable = true;
         }
         else

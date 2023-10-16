@@ -8,10 +8,17 @@ public class GameManager : MonoBehaviour
     public Canvas canvas;
     public Canvas cameraCanvas;
     public bool questComplete = false;
+
+    [SerializeField]
+    private PhotoSO photoSO;
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1;
+        photoSO.spriteList.Level1.Clear();
+        photoSO.spriteList.Level2.Clear();
+        photoSO.spriteList.Level3.Clear();
+        photoSO.spriteList.Miscellaneous.Clear();
     }
 
     // Update is called once per frame
