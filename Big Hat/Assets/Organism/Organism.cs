@@ -8,6 +8,15 @@ public class Organism : ScriptableObject
 {
     public string Name;
     public string ScientificName;
+    public Level level;
+    [SerializeField]
+    public enum Level
+    {
+        Level1,
+        Level2,
+        Level3,
+        None
+    }
 
     [NonSerialized] public bool isCaptured = false;
 

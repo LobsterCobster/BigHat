@@ -13,7 +13,7 @@ public class Dialogue : MonoBehaviour
 
     public GameObject Scrapbook;
 
-    public GameObject GameManager;
+    public GameObject gameManager;
 
     public DialogueTree dialoguetree;
 
@@ -69,8 +69,8 @@ public class Dialogue : MonoBehaviour
     }
     public void Determine()
     {
-        GameManager.GetComponent<ChangeScene>().openCanvas("ScrapBook");
-        string name = GameObject.Find("Frame").GetComponent<FrameReference>().organismReference;
+        gameManager.GetComponent<ChangeScene>().openCanvas("ScrapBook");
+        string name = GameObject.Find("Frame").GetComponent<FrameReference>().organism.Name;
         if (name == dialoguetree.dialoguesection[questNumber].answer)
         {
             Success();
@@ -123,10 +123,10 @@ public class Dialogue : MonoBehaviour
     public void End()
     {
         script = dialoguetree.questEnd;
-        questsComplete = true;
         Scrapbook.transform.Find("Submit").gameObject.SetActive(false);
         questsComplete = true;
         GameObject.Find("Exclamation").gameObject.SetActive(false);
+        gameManager.GetComponent<GameManager>().QuestComplete();
         StartDialogue();
     }
     IEnumerator Quest(string[] script)

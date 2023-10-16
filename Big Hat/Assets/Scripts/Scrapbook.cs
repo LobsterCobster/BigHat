@@ -14,6 +14,8 @@ public class Scrapbook : MonoBehaviour
 {
     public GameObject photo;
     public Text ObjectName;
+    public Text ScientificName;
+    public Text PageTitle;
 
 
     private Database database;
@@ -24,6 +26,7 @@ public class Scrapbook : MonoBehaviour
     private int pageNumber;
 
     public List<SpriteReference> sprites = new List<SpriteReference>();
+
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +67,7 @@ public class Scrapbook : MonoBehaviour
             sprites = spriteList.Miscellaneous.ToList();
         }
         LoadImage();
+        LoadPageTitle();
     }
     public void LoadImage()
     {
@@ -78,7 +82,7 @@ public class Scrapbook : MonoBehaviour
                     Sprite sp = sprites[i].image;
                     frame.GetComponent<Image>().color = Color.white;
                     frame.GetComponent<Image>().sprite = sp;
-                    frame.GetComponent<FrameReference>().GetFrameName(sprites[i].name);
+                    frame.GetComponent<FrameReference>().GetOrganismReference(sprites[i].name);
                 }
 
             }
@@ -94,12 +98,10 @@ public class Scrapbook : MonoBehaviour
                 {
                     if (i + (6 * spriteNumber) < sprites.Count)
                     {
-                        Debug.Log(i + (6 * spriteNumber));
-                        Debug.Log(sprites.Count);
                         Sprite sp = sprites[i + (6 * spriteNumber)].image;
                         frame.GetComponent<Image>().color = Color.white;
                         frame.GetComponent<Image>().sprite = sp;
-                        frame.GetComponent<FrameReference>().GetFrameName(sprites[i].name);
+                        frame.GetComponent<FrameReference>().GetOrganismReference(sprites[i].name);
                     }
                 }
             }
@@ -112,7 +114,7 @@ public class Scrapbook : MonoBehaviour
             GameObject frame = GameObject.Find("Frame" + i);
             frame.GetComponent<Image>().color = Color.clear;
             frame.GetComponent<Image>().sprite = null;
-            frame.GetComponent<FrameReference>().organismReference = null;
+            frame.GetComponent<FrameReference>().organism = null;
         }
     }
     public void ClickImage()
@@ -124,10 +126,12 @@ public class Scrapbook : MonoBehaviour
         {
             image.GetComponent<Image>().color = Color.white;
             image.GetComponent<Image>().sprite = frame;
-            image.GetComponent<FrameReference>().GetFrameName(child.GetComponent<FrameReference>().organismReference);
+            image.GetComponent<FrameReference>().GetOrganismReference(child.GetComponent<FrameReference>().organism.Name);
             int id = int.Parse(string.Concat(child.name.Where(Char.IsDigit)));
-            string name = image.GetComponent<FrameReference>().organismReference;
+            string name = image.GetComponent<FrameReference>().organism.Name;
+            string scientificName = image.GetComponent<FrameReference>().organism.ScientificName;
             ObjectName.text = name;
+            ScientificName.text = scientificName;
             transform.Find("Submit").GetComponent<Button>().interactable = true;
         }
         else
@@ -150,5 +154,24 @@ public class Scrapbook : MonoBehaviour
             pageNumber--;
         }
         ClearImage();
+    }
+    public void LoadPageTitle()
+    {
+        if (pageNumber == 1)
+        {
+            PageTitle.text = "Level 1";
+        }
+        else if (pageNumber == 2)
+        {
+            PageTitle.text = "Level 2";
+        }
+        else if (pageNumber == 3)
+        {
+            PageTitle.text = "Level 3";
+        }
+        else
+        {
+            PageTitle.text = $"Miscellaneous {pageNumber - 3}";
+        }
     }
 }

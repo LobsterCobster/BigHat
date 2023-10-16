@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public Camera cam;
     public Canvas canvas;
     public Canvas cameraCanvas;
+    public bool questComplete = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,5 +32,19 @@ public class GameManager : MonoBehaviour
     {
         GameObject NPC = GameObject.FindGameObjectWithTag("NPC");
         NPC.GetComponent<Dialogue>().Determine();
+    }
+    public void QuestComplete()
+    {
+        questComplete = true;
+    }
+    public void EndLevel(string LevelName)
+    {
+        StartCoroutine(LevelWipe(LevelName));
+    }
+    IEnumerator LevelWipe(string LevelName)
+    {
+        yield return new WaitForSeconds(1);
+        gameObject.GetComponent<ChangeScene>().loadScene(LevelName);
+
     }
 }

@@ -46,7 +46,7 @@ public class Photo : MonoBehaviour
     }
     public void Capture()
     {
-        int level = 0;
+        Organism.Level level = Organism.Level.None;
         string name = "";
         RaycastHit hit;
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
@@ -58,9 +58,6 @@ public class Photo : MonoBehaviour
                 name = hit.transform.root.name;
                 foreach (var item in database.organisms)
                 {
-                    Debug.Log(item.name);
-                    Debug.Log(name);
-                    Debug.Log(item.isCaptured);
                     if (item.name == name && item.isCaptured == true)
                     {
                         captured = true;
@@ -69,38 +66,16 @@ public class Photo : MonoBehaviour
                     else if (item.name == name && item.isCaptured == false)
                     {
                         item.isCaptured = true;
+                        level = item.level;
                         break;
                     }
-                }
-                if (!captured)
-                {
-                    string scene = SceneManager.GetActiveScene().name;
-                    if (scene == "Level1")
-                    {
-                        level = 1;
-                    }
-                    else if (scene == "Level2")
-                    {
-                        level = 2;
-                    }
-                    else if (scene == "Level3")
-                    {
-                        level = 3;
-                    }
-                    
-                }
-                else
-                {
-                    level = 0;
                 }
             }
         }
         else
         {
-            level = 0;
             name = spriteList.Miscellaneous.Count.ToString();
         }
-        Debug.Log(level);
         StartCoroutine(CaptureScreen(level, name));
         DisplayText(name);
     }
@@ -111,7 +86,7 @@ public class Photo : MonoBehaviour
         timer = true;
         time = 0f;
     }
-    public IEnumerator CaptureScreen(int level, string name)
+    public IEnumerator CaptureScreen(Organism.Level level, string name)
     {
         yield return null;
         GameObject.Find("CameraBackground").GetComponent<Canvas>().enabled = false;
@@ -126,15 +101,15 @@ public class Photo : MonoBehaviour
         SpriteReference spriteReference = new SpriteReference();
         spriteReference.image = sprite;
         spriteReference.name = name;
-        if (level == 1)
+        if (level == Organism.Level.Level1)
         {
             spriteList.Level1.Add(spriteReference);
         }
-        else if (level == 2)
+        else if (level == Organism.Level.Level2)
         {
             spriteList.Level2.Add(spriteReference);
         }
-        else if (level == 3)
+        else if (level == Organism.Level.Level3)
         {
             spriteList.Level3.Add(spriteReference);
         }

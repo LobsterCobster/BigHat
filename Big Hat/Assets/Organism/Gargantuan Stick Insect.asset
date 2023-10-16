@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41ee6a87a170e34c8b93b555f2efbd5, type: 3}
   m_Name: Gargantuan Stick Insect
   m_EditorClassIdentifier: 
-  Name: 'Gargantuan Stick Insect '
+  Name: Gargantuan Stick Insect
   ScientificName: Ctenomorpha gargantua
+  level: 2
