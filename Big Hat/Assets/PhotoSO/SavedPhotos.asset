@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteList:
     Level1: []
-    Level2: []
+    Level2:
+    - image: {fileID: 0}
+      name: Bush Turkey
     Level3: []
     Miscellaneous: []

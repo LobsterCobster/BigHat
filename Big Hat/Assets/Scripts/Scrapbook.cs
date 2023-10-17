@@ -126,7 +126,7 @@ public class Scrapbook : MonoBehaviour
         {
             image.GetComponent<Image>().color = Color.white;
             image.GetComponent<Image>().sprite = frame;
-            if (image.GetComponent<FrameReference>().mis == false)
+            if (child.GetComponent<FrameReference>().mis == false)
             {
                 image.GetComponent<FrameReference>().GetOrganismReference(child.GetComponent<FrameReference>().organism.Name);
                 int id = int.Parse(string.Concat(child.name.Where(Char.IsDigit)));
