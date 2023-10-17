@@ -22,7 +22,17 @@ public class MoveBarrier : MonoBehaviour
     {
         if (gameManager.questComplete)
         {
-            gameObject.SetActive(false);
+            foreach (Transform child in transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            foreach (Transform child in transform)
+            {
+                child.gameObject.SetActive(true);
+            }
         }
     }
 }
