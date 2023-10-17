@@ -56867,6 +56867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CamObject: {fileID: 1702257623}
   zoomAMT: 60
+  slider: {fileID: 490363711}
 --- !u!1 &1710346676
 GameObject:
   m_ObjectHideFlags: 0
@@ -62396,6 +62397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
   scrapbook: {fileID: 1619275272}
+  cameraView: {fileID: 0}
 --- !u!114 &2035478214
 MonoBehaviour:
   m_ObjectHideFlags: 0

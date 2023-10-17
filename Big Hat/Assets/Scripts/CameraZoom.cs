@@ -9,6 +9,7 @@ public class CameraZoom : MonoBehaviour
     private Camera cam;
     private Vector3 origin;
     public float zoomAMT = 60f;
+    public Slider slider;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +25,10 @@ public class CameraZoom : MonoBehaviour
     public void Zoom(float zoom)
     {
         zoomAMT = zoom;
+    }
+    public void RevertZoom()
+    {
+        zoomAMT = 60f;
+        slider.value = 60f;
     }
 }

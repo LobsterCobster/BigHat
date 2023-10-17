@@ -29,6 +29,7 @@ public class ChangeView : MonoBehaviour
         {
             Maincam.enabled = true;
             cam.enabled = false;
+            cam.GetComponent<CameraZoom>().RevertZoom();
         }
     }
 }

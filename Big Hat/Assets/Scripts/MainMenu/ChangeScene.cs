@@ -8,6 +8,7 @@ public class ChangeScene : MonoBehaviour
 {
     public Canvas canvas;
     public GameObject scrapbook;
+    public GameObject cameraView;
     // Start is called before the first frame update
     void Start()
     {
