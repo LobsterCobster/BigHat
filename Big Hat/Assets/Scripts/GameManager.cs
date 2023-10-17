@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     }
     public void GetNPCDialogue()
     {
+        transform.GetComponent<ChangeScene>().openScrapbook();
         GameObject NPC = GameObject.FindGameObjectWithTag("NPC");
         NPC.GetComponent<Dialogue>().Determine();
     }

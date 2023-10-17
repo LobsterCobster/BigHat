@@ -8,6 +8,9 @@ using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class Dialogue : MonoBehaviour
 {
+
+    public string scrapbookString = "ScrapBook";
+
     public GameObject ExclamationPoint;
 
     public GameObject photo;
@@ -71,7 +74,6 @@ public class Dialogue : MonoBehaviour
     }
     public void Determine()
     {
-        gameManager.GetComponent<ChangeScene>().openCanvas("ScrapBook");
         string name = GameObject.Find("Frame").GetComponent<FrameReference>().organism.Name;
         if (name == dialoguetree.dialoguesection[questNumber].answer)
         {
@@ -93,11 +95,17 @@ public class Dialogue : MonoBehaviour
     }
     public void Talk()
     {
-        if (!questsComplete)
+        if (!questsComplete & !missionActive)
         {
             script = dialoguetree.dialoguesection[questNumber].questdialogue;
             missionActive = true;
             StartDialogue();
+        }
+        else if (missionActive & !questsComplete)
+        {
+            gameManager.GetComponent<ChangeScene>().openScrapbook();
+            Scrapbook.GetComponent<Scrapbook>().SetSubmissionButtonOn();
+
         }
         else
         {
@@ -168,17 +176,14 @@ public class Dialogue : MonoBehaviour
     {
         if (missionActive)
         {
-            Scrapbook.transform.Find("Submit").gameObject.SetActive(true);
             ExclamationPoint.gameObject.SetActive(true);
         }
         else if (!missionActive & !questsComplete)
         {
-            Scrapbook.transform.Find("Submit").gameObject.SetActive(false);
             ExclamationPoint.gameObject.SetActive(true);
         }
         else 
         {
-            Scrapbook.transform.Find("Submit").gameObject.SetActive(false);
             ExclamationPoint.gameObject.SetActive(false);
         }
     }

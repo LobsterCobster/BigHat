@@ -39151,8 +39151,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2035478213}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: openCanvas
-        m_Mode: 5
+        m_MethodName: openScrapbook
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -40462,6 +40462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dbfad0c68c66c447bb0bbfd9387e281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrapbookString: ScrapBook
   ExclamationPoint: {fileID: 1497847039}
   photo: {fileID: 1702257623}
   Scrapbook: {fileID: 1619275272}
@@ -40756,8 +40757,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2035478213}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: openCanvas
-        m_Mode: 5
+        m_MethodName: openScrapbook
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -62394,6 +62395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  scrapbook: {fileID: 1619275272}
 --- !u!114 &2035478214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64280,8 +64282,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2955122047870996442, guid: d344ebf75115d6f4bbf5fcb65f4a4489, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4277182
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955122047870996442, guid: d344ebf75115d6f4bbf5fcb65f4a4489, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.097538844
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955122047870996442, guid: d344ebf75115d6f4bbf5fcb65f4a4489, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.02
+      value: -0.01999998
       objectReference: {fileID: 0}
     - target: {fileID: 2955122047870996442, guid: d344ebf75115d6f4bbf5fcb65f4a4489, type: 3}
       propertyPath: m_LocalPosition.y
@@ -64319,9 +64329,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2955122047870996445, guid: d344ebf75115d6f4bbf5fcb65f4a4489, type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955122047870996445, guid: d344ebf75115d6f4bbf5fcb65f4a4489, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2955122047870996447, guid: d344ebf75115d6f4bbf5fcb65f4a4489, type: 3}
       propertyPath: m_Name
       value: Fly Particle Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955122047870996447, guid: d344ebf75115d6f4bbf5fcb65f4a4489, type: 3}
+      propertyPath: m_TagString
+      value: Capture
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d344ebf75115d6f4bbf5fcb65f4a4489, type: 3}

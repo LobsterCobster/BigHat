@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
     public Canvas canvas;
+    public GameObject scrapbook;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,8 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene(levelname);
     }
     public void openCanvas(string canvasName) 
-    { 
+    {
+
         canvas = GameObject.Find(canvasName).GetComponent<Canvas>();
         if (canvas.enabled == false)
         {
@@ -36,6 +38,25 @@ public class ChangeScene : MonoBehaviour
         {
             canvas.enabled = false;
             Time.timeScale = 1;
+        }
+    }
+    public void openScrapbook()
+    {
+
+        canvas = scrapbook.GetComponent<Canvas>();
+        if (canvas.enabled == false)
+        {
+            canvas.enabled = true;
+            Time.timeScale = 0;
+
+        }
+        else
+        {
+            canvas.enabled = false;
+            Time.timeScale = 1;
+            scrapbook.GetComponent<Scrapbook>().RevertScrapbook();
+            scrapbook.GetComponent<Scrapbook>().SetSubmissionButtonOf();
+
         }
     }
     public void Exit()

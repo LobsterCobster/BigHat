@@ -177,4 +177,26 @@ public class Scrapbook : MonoBehaviour
             PageTitle.text = $"Miscellaneous {pageNumber - 3}";
         }
     }
+    public void RevertScrapbook()
+    {
+        pageNumber = 1;
+        GameObject image = GameObject.Find("Frame");
+        image.GetComponent<Image>().color = Color.clear;
+        image.GetComponent<Image>().sprite = null;
+        ClearImage();
+        ObjectName.text = "";
+        ScientificName.text = "";
+        transform.Find("Submit").GetComponent<Button>().interactable = false;
+    }
+    public void SetSubmissionButtonOn()
+    {
+        transform.Find("Submit").gameObject.SetActive(true);
+    }
+    public void SetSubmissionButtonOf()
+    {
+        if (transform.Find("Submit").gameObject.activeSelf == true)
+        {
+            transform.Find("Submit").gameObject.SetActive(false);
+        }
+    }
 }
