@@ -37,7 +37,7 @@ public class Dialogue : MonoBehaviour
 
     public int index;
 
-    private bool missionActive = false;
+    public bool missionActive = false;
 
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TextMeshProUGUI dialogueText;
@@ -95,17 +95,11 @@ public class Dialogue : MonoBehaviour
     }
     public void Talk()
     {
-        if (!questsComplete & !missionActive)
+        if (!questsComplete)
         {
             script = dialoguetree.dialoguesection[questNumber].questdialogue;
             missionActive = true;
             StartDialogue();
-        }
-        else if (missionActive & !questsComplete)
-        {
-            gameManager.GetComponent<ChangeScene>().openScrapbook();
-            Scrapbook.GetComponent<Scrapbook>().SetSubmissionButtonOn();
-
         }
         else
         {

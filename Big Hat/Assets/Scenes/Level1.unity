@@ -40790,6 +40790,7 @@ MonoBehaviour:
   dialoguetree: {fileID: 11400000, guid: 598e9c1906996cf4c8f5ec59d57959c5, type: 2}
   player: {fileID: 554485940}
   index: 0
+  missionActive: 0
   dialogueBox: {fileID: 484008395}
   dialogueText: {fileID: 1494988282}
 --- !u!114 &1321697297
@@ -55567,6 +55568,8 @@ MonoBehaviour:
   photoSO: {fileID: 11400000, guid: 8a9ae0c68c09e354cb83f3f024ce3065, type: 2}
   frame: {fileID: 0}
   sprites: []
+  dialogue: {fileID: 1321697291}
+  GameManager: {fileID: 0}
 --- !u!1 &1633565136
 GameObject:
   m_ObjectHideFlags: 0

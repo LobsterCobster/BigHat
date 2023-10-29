@@ -28,6 +28,9 @@ public class Scrapbook : MonoBehaviour
 
     public List<PhotoSO.SpriteReference> sprites = new List<PhotoSO.SpriteReference>();
 
+    public GameObject dialogue;
+    public GameObject GameManager;
+
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +71,7 @@ public class Scrapbook : MonoBehaviour
         }
         LoadImage();
         LoadPageTitle();
+        SubmitButton();
     }
     public void LoadImage()
     {
@@ -197,6 +201,13 @@ public class Scrapbook : MonoBehaviour
         if (transform.Find("Submit").gameObject.activeSelf == true)
         {
             transform.Find("Submit").gameObject.SetActive(false);
+        }
+    }
+    public void SubmitButton()
+    {
+        if (dialogue.GetComponent<Dialogue>().missionActive)
+        {
+            SetSubmissionButtonOn();
         }
     }
 }
