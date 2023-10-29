@@ -9244,7 +9244,6 @@ GameObject:
   - component: {fileID: 56669000}
   - component: {fileID: 56668999}
   - component: {fileID: 56668998}
-  - component: {fileID: 56668997}
   m_Layer: 0
   m_Name: LevelTransition
   m_TagString: Untagged
@@ -9252,21 +9251,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &56668997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 56668996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2aa676c3c332004ba4ce184c3bc8952, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 554485940}
-  gameManager: {fileID: 2035478210}
-  LevelName: Level2
 --- !u!54 &56668998
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20651,7 +20635,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &564903330
 PrefabInstance:
@@ -41224,7 +41208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e955b95661c001b4286a12f9089a9193, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e955b95661c001b4286a12f9089a9193, type: 3}
       propertyPath: m_LocalScale.x
@@ -48608,7 +48592,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1413041662 stripped
 Transform:
@@ -48901,7 +48885,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 106274520711909747, guid: ecd11c03defda6b4ea399d284d3c6b28, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 106274520711909747, guid: ecd11c03defda6b4ea399d284d3c6b28, type: 3}
       propertyPath: m_LocalPosition.x
@@ -48958,7 +48942,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 299386619413520121, guid: 264ab728737ada044b0c96e09714d985, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 299386619413520121, guid: 264ab728737ada044b0c96e09714d985, type: 3}
       propertyPath: m_LocalPosition.x
@@ -60686,7 +60670,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 90, y: 70, z: 0}
 --- !u!4 &1948603166 stripped
 Transform:
@@ -62591,6 +62575,7 @@ GameObject:
   - component: {fileID: 2035478211}
   - component: {fileID: 2035478213}
   - component: {fileID: 2035478214}
+  - component: {fileID: 2035478215}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -62659,6 +62644,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1702257626}
   Maincam: {fileID: 963194227}
+--- !u!114 &2035478215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035478210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2aa676c3c332004ba4ce184c3bc8952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 554485940}
+  gameManager: {fileID: 2035478210}
+  LevelName: EndScreen
 --- !u!1 &2046948629
 GameObject:
   m_ObjectHideFlags: 0
@@ -63891,7 +63891,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2955122047870996442, guid: d344ebf75115d6f4bbf5fcb65f4a4489, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2955122047870996442, guid: d344ebf75115d6f4bbf5fcb65f4a4489, type: 3}
       propertyPath: m_LocalScale.y
