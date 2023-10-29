@@ -14,50 +14,115 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguesection:
   - questdialogue:
-    - FIND AN ANIMAL,
-    - WITH CLAWS,
-    - A TAIL,
-    - AND FUR.
+    - "PHOTOGRAPH AN ANIMAL\u2026"
+    - "\u2026WITH CLAWS\u2026"
+    - "\u2026A TAIL\u2026 "
+    - "\u2026AND FUR."
     answer: Brushtail Possum
     success:
-    - AHA!
-    - A BRUSHTAIL POSSUM,
-    - HAS BEEN MAKING ALL THAT NOISE,
+    - "DID YOU KNOW\u2026"
     fact:
-    - DID YOU KNOW,
-    - BRUSHTAIL POSSUMS MOSTLY EAT EUCALYPTUS LEAVES.
+    - "\u2026BRUSHTAIL POSSUMS\u2026 "
+    - "\u2026LIVE UP TO THIRTEEN YEARS... "
+    - "\u2026AND MOSTLY EAT\u2026"
+    - "\u2026EUCALYPTUS LEAVES."
     failure:
     - THATS NOT IT,
     - KEEP LOOKING!
   - questdialogue:
-    - LOOK FOR AN ANIMAL,
-    - WITH WINGS,
-    - AND HAIR,
-    - THAT MAKES HONEY.
+    - "LOOK FOR AN ANIMAL\u2026"
+    - "\u2026THAT'S BLACK\u2026 "
+    - "\u2026WITH WINGS\u2026 "
+    - "\u2026AND HAIR."
     answer: European Honeybee
     success:
-    - GREAT!
-    - A EUROPEAN HONEYBEE.
-    - I LIKE HONEY.
+    - "DID YOU KNOW\u2026 "
     fact:
-    - DID YOU KNOW,
-    - NOT ALL EUROPEAN HONEYBEES HAVE STINGERS
+    - "\u2026NATIVE HONEYBEES\u2026"
+    - "\u2026DON'T HAVE STINGERS\u2026."
+    - "\u2026AND LIVE IN COLONIES\u2026 "
+    - "\u2026OF UP TO TEN THOUSAND WORKERS!"
     failure:
     - THATS NOT IT,
     - KEEP LOOKING!
   - questdialogue:
-    - PHOTOGRAPH AN ANIMAL,
-    - THAT HAS CLAWS,
-    - A TAIL,
-    - AND SCALES.
+    - "SPOT AN ANIMAL\u2026 "
+    - "\u2026THAT'S GREY AND BROWN\u2026 "
+    - "\u2026WITH WINGS\u2026 "
+    - "\u2026AND FEATHERS."
+    answer: Curlew
+    success:
+    - "DID YOU KNOW\u2026 "
+    fact:
+    - "\u2026BUSH STONE-CURLEWS\u2026 "
+    - "\u2026ARE ALSO KNOWN AS\u2026 "
+    - "\u2026'WEE-LOO'..."
+    - "\u2026AFTER THEIR EERIE GHOST-LIKE WAILING."
+    failure:
+    - THATS NOT IT,
+    - KEEP LOOKING!
+  - questdialogue:
+    - "HAVE YOU SEEN AN ANIMAL\u2026"
+    - "\u2026WITH A RED HEAD\u2026 "
+    - "\u2026A YELLOW WATTLE\u2026"
+    - "\u2026AND A FANLIKE TAIL?"
+    answer: Bush Turkey
+    success:
+    - "DID YOU KNOW\u2026 "
+    fact:
+    - "\u2026BUSH TURKEYS CAN BUILD NESTS... "
+    - "\u2026UP TO ONE AND A HALF METRES HIGH\u2026"
+    - "\u2026AND FOUR METRES ACROSS!"
+    failure:
+    - THATS NOT IT,
+    - KEEP LOOKING!
+  - questdialogue:
+    - "THERE'S AN ANIMAL ABOUT\u2026"
+    - "\u2026WITH A BLACK HEAD\u2026"
+    - "\u2026AND WHITE FEATHERS\u2026"
+    - "\u2026AND LONG BLACK LEGS."
+    answer: White Ibis
+    success:
+    - "DID YOU KNOW\u2026 "
+    fact:
+    - "\u2026WHITE IBIS\u2026"
+    - "\u2026LIVE UP TO TWENTY EIGHT YEARS\u2026 "
+    - "\u2026AND ARE ALSO KNOWN AS\u2026 "
+    - "\u2026'BIN CHICKENS'."
+    failure:
+    - THATS NOT IT,
+    - KEEP LOOKING!
+  - questdialogue:
+    - "TAKE A PHOTO OF SOMETHING\u2026"
+    - "\u2026LONG\u2026"
+    - "\u2026BROWN\u2026"
+    - "\u2026AND STICKY."
+    answer: Gargantuan Stick Insect
+    success:
+    - "DID YOU KNOW\u2026 "
+    fact:
+    - "\u2026THE GARGANTUAN STICK INSECT..."
+    - "\u2026CAN REACH A LENGTH OF\u2026"
+    - "\u2026FIFTY SIX CENTIMETRES\u2026"
+    - "\u2026AND THE MALES\u2026"
+    - "\u2026CAN FLY."
+    failure:
+    - THATS NOT IT,
+    - KEEP LOOKING!
+  - questdialogue:
+    - "FIND AN ANIMAL\u2026"
+    - "\u2026THAT HAS CLAWS\u2026"
+    - "\u2026A TAIL\u2026"
+    - "\u2026AND SCALES."
     answer: Blue Tongue
     success:
-    - WHY IS THE BLUETONGUE'S TONGUE BLUE?
+    - "DID YOU KNOW\u2026 "
     fact:
-    - DID YOU KNOW,
-    - A BLUETONGUE CAN LIVE UP TO 20 YEARS.
+    - "\u2026THE BLUETONGUE'S TONGUE..."
+    - "\u2026REFLECTS UV LIGHT\u2026"
+    - "\u2026TO STARTLE THREATENING PREDATORS."
     failure:
     - THATS NOT IT,
     - KEEP LOOKING!
   questEnd:
-  - I'LL LET YOU PASS NOW!
+  - 
